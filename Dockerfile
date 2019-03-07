@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       dnsutils \
       dstat \
       findutils \
+      gnupg \
       htop \
       iptables \
       jq \
@@ -42,8 +43,6 @@ RUN curl -s https://s3.amazonaws.com/download.draios.com/DRAIOS-GPG-KEY.public |
 
 # Install packages from our repo
 RUN apt-get update && apt-get install -y \
-    bcc-tools \
-    gpstree \
     sysdig \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
