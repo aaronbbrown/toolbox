@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends \
+      apache2-utils \
       atop \
       ca-certificates \
       coreutils \
@@ -48,7 +49,7 @@ RUN apt-get update && apt-get install -y \
 
 # Add vegeta
 WORKDIR /tmp
-RUN wget -q https://github.com/tsenart/vegeta/releases/download/cli%2Fv12.2.1/vegeta-12.2.1-linux-amd64.tar.gz && \
-    echo -n "b1ca092c0a45a5c7d3092d9c2e00505dc40b9091bc01267651e887e12b30f1ca  vegeta-12.2.1-linux-amd64.tar.gz" | sha256sum -c - && \
-    tar -xzvf vegeta-12.2.1-linux-amd64.tar.gz && \
+RUN wget -q 'https://github.com/tsenart/vegeta/releases/download/v12.8.4/vegeta_12.8.4_linux_amd64.tar.gz' && \
+    echo -n "c9a8866d748976a5cd012d436887b8af4e99b58e67c3e5da7558858bfc8b0477  vegeta_12.8.4_linux_amd64.tar.gz" | sha256sum -c - && \
+    tar -xzvf vegeta_12.8.4_linux_amd64.tar.gz && \
     mv -v vegeta /usr/local/bin
